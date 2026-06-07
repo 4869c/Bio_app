@@ -1,0 +1,17 @@
+.git
+.gitignore
+.gitattributes
+vendor
+node_modules
+.env
+.env.backup
+.env.production
+storage/logs/*.log
+bootstrap/cache/*.php
+tests
+.claude
+boost.json
+.mcp.json
+Setup_Guide.md
+bio_app.sql
+vendor.zip
