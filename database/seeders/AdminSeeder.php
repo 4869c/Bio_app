@@ -10,7 +10,6 @@ class AdminSeeder extends Seeder
 {
     public function run(): void
     {
-        // Default admin account for the project.
         Admin::updateOrCreate(
             ['email' => 'admin@bio.com'],
             [

@@ -12,7 +12,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Simple stats for the dashboard.
         $stats = [
             'products' => Product::count(),
             'orders'   => Order::count(),

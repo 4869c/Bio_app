@@ -15,7 +15,6 @@ class Product extends Model
         'image',
     ];
 
-    // A product can appear in many order items.
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);

@@ -3,7 +3,6 @@
 
 @section('content')
 
-{{-- ===== Hero ===== --}}
 <section class="hero mb-5 shadow-sm">
     <div class="row g-0 align-items-center">
         <div class="col-lg-7 p-4 p-md-5">
@@ -35,7 +34,6 @@
     </div>
 </section>
 
-{{-- ===== Why us ===== --}}
 <section class="mb-5">
     <div class="row g-4 text-center">
         <div class="col-md-4">
@@ -62,7 +60,6 @@
     </div>
 </section>
 
-{{-- ===== Featured Products ===== --}}
 <section class="mb-4">
     <div class="d-flex justify-content-between align-items-end mb-3">
         <div>

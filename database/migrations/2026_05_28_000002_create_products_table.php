@@ -12,10 +12,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('category'); // Fruits, Vegetables, Dairy, Honey, Herbs...
+            $table->string('category');
             $table->decimal('price', 8, 2);
-            $table->integer('quantity')->default(0); // stock
-            $table->string('image')->nullable(); // path to image file
+            $table->integer('quantity')->default(0);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

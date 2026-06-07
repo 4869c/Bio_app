@@ -20,7 +20,6 @@ class AdminAuthController extends Controller
             'password' => 'required',
         ]);
 
-        // Use the "admin" guard so admins log in independently of clients.
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('admin.dashboard');

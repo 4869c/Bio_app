@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-// Cart stored in the user's session for simplicity.
-// Structure: session('cart') = [ product_id => ['name', 'price', 'quantity', 'image'] ]
 class CartController extends Controller
 {
     public function index()

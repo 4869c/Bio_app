@@ -5,6 +5,7 @@
 .env.production
 .phpactor.json
 .phpunit.result.cache
+/.claude
 /.codex
 /.cursor/
 /.idea
@@ -26,3 +27,6 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 Bio-Farms-Documentation.pdf
+/boost.json
+/.mcp.json
+/Setup_Guide.md

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('customer_phone')->nullable();
             $table->text('customer_address');
             $table->decimal('total', 10, 2);
-            $table->string('payment_status')->default('paid'); // paid (fake), unpaid
-            $table->string('order_status')->default('pending'); // pending, processing, delivered
+            $table->string('payment_status')->default('paid');
+            $table->string('order_status')->default('pending');
             $table->timestamps();
         });
     }

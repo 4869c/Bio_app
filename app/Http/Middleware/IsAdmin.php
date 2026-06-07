@@ -6,7 +6,6 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// Allow only logged-in admins.
 class IsAdmin
 {
     public function handle(Request $request, Closure $next)

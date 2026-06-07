@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    // Show checkout form with order summary.
     public function index()
     {
         $cart = session('cart', []);
@@ -22,7 +21,6 @@ class CheckoutController extends Controller
         return view('checkout.index', compact('cart', 'grandTotal'));
     }
 
-    // Save customer info to session, then go to fake payment.
     public function process(Request $request)
     {
         $data = $request->validate([

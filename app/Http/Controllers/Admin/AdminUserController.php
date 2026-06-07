@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-// Manage other admin accounts (create + delete).
 class AdminUserController extends Controller
 {
     public function index()
@@ -42,7 +41,6 @@ class AdminUserController extends Controller
 
     public function destroy($id)
     {
-        // Prevent admin from deleting their own account.
         if (Auth::guard('admin')->id() == $id) {
             return back()->with('error', "You can't delete your own account.");
         }

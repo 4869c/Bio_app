@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-// Admin uses a separate table and a separate auth guard.
 class Admin extends Authenticatable
 {
     use Notifiable;

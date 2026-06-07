@@ -14,13 +14,10 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-// ---------------- Public ----------------
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Products listing (open to everyone)
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
-// ---------------- Client Auth ----------------
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
@@ -29,14 +26,12 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// ---------------- Cart (open, uses session) ----------------
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
-// ---------------- Checkout / Payment / Orders (require login) ----------------
 Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
@@ -47,19 +42,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/orders/{id}/confirmation', [OrderController::class, 'confirmation'])->name('orders.confirmation');
 });
 
-// ---------------- Admin ----------------
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    // Admin login / logout
     Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AdminAuthController::class, 'login']);
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
-    // Protected admin routes
     Route::middleware('is_admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        // Products CRUD
         Route::get('/products', [AdminProductController::class, 'index'])->name('products.index');
         Route::get('/products/create', [AdminProductController::class, 'create'])->name('products.create');
         Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
@@ -67,12 +58,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/products/{id}', [AdminProductController::class, 'update'])->name('products.update');
         Route::delete('/products/{id}', [AdminProductController::class, 'destroy'])->name('products.destroy');
 
-        // Orders
         Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
         Route::get('/orders/{id}', [AdminOrderController::class, 'show'])->name('orders.show');
         Route::post('/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
-        // Admin users management
         Route::get('/admins', [AdminUserController::class, 'index'])->name('admins.index');
         Route::get('/admins/create', [AdminUserController::class, 'create'])->name('admins.create');
         Route::post('/admins', [AdminUserController::class, 'store'])->name('admins.store');

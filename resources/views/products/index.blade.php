@@ -11,7 +11,6 @@
     </div>
 </div>
 
-{{-- ===== Filters ===== --}}
 <form method="GET" action="{{ route('products.index') }}" class="card border-0 shadow-sm rounded-4 p-3 mb-4">
     <div class="row g-2">
         <div class="col-md-4">
@@ -49,7 +48,6 @@
     @endif
 </form>
 
-{{-- ===== Products ===== --}}
 <div class="row g-4">
     @forelse($products as $product)
         <div class="col-md-4 col-lg-3">

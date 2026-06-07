@@ -7,16 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-// Handles Sign Up, Sign In, and Logout for clients.
 class AuthController extends Controller
 {
-    // Show register form
     public function showRegister()
     {
         return view('auth.register');
     }
 
-    // Save new client user
     public function register(Request $request)
     {
         $request->validate([
@@ -36,13 +33,11 @@ class AuthController extends Controller
             ->with('success', 'Account created successfully!');
     }
 
-    // Show login form
     public function showLogin()
     {
         return view('auth.login');
     }
 
-    // Attempt login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -60,7 +55,6 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    // Logout
     public function logout(Request $request)
     {
         Auth::logout();

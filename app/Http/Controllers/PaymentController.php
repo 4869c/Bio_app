@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-// Fake payment: no real gateway. Just simulate success and save the order.
 class PaymentController extends Controller
 {
     public function index()
@@ -23,7 +22,6 @@ class PaymentController extends Controller
 
     public function pay(Request $request)
     {
-        // Just validate the fake fields. We don't actually charge a card.
         $request->validate([
             'card_number'  => 'required|string',
             'card_holder'  => 'required|string',
@@ -39,13 +37,11 @@ class PaymentController extends Controller
                 ->with('error', 'Cart or checkout info missing.');
         }
 
-        // Calculate total
         $total = 0;
         foreach ($cart as $item) {
             $total += $item['price'] * $item['quantity'];
         }
 
-        // Save order + items in a transaction.
         $order = DB::transaction(function () use ($cart, $checkout, $total) {
             $order = Order::create([
                 'user_id'          => Auth::id(),
@@ -68,7 +64,6 @@ class PaymentController extends Controller
                     'subtotal'     => $item['price'] * $item['quantity'],
                 ]);
 
-                // Reduce stock
                 $product = Product::find($productId);
                 if ($product) {
                     $product->quantity = max(0, $product->quantity - $item['quantity']);
@@ -79,7 +74,6 @@ class PaymentController extends Controller
             return $order;
         });
 
-        // Clear cart + checkout session data
         session()->forget('cart');
         session()->forget('checkout');
 

@@ -43,7 +43,6 @@ return [
             'provider' => 'users',
         ],
 
-        // Separate guard for admin users (uses admins table).
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
